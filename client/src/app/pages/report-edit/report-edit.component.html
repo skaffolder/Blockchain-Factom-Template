@@ -1,0 +1,41 @@
+<!-- TITLE -->
+<div class="mb-40 mt-40">
+    <h1>Report Edit</h1>
+</div>
+<div class="card mb-40">
+    <div class="card-header">
+        <i class="fa fa-edit"></i> Edit
+    </div>
+    <div class="card-body">
+        <form #editForm="ngForm" [ngClass]="{'was-validated': formValid!=null}">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" [(ngModel)]="item.date" name="date" #date="ngModel" >
+                    </div>
+                    <!-- RELATIONS -->
+                    <h2 class="mb-20">Relations</h2>
+
+                    <label for="doctor">Doctor</label>
+                    <select name="_doctor" id="_doctor" [(ngModel)]="item._doctor" class="form-control" #_doctor="ngModel"  >
+                        <option *ngFor="let item of list_doctor" [value]="item._id">{{item._id}}</option>
+                    </select>
+                    <label for="patient">Patient</label>
+                    <select name="_patient" id="_patient" [(ngModel)]="item._patient" class="form-control" #_patient="ngModel"  >
+                        <option *ngFor="let item of list_patient" [value]="item._id">{{item._id}}</option>
+                    </select>
+
+                    
+        
+
+                    <!-- BUTTON BAR -->
+                    <div class="mt-40">
+                        <button class="btn btn-primary pull-right" (click)="save(editForm.valid, item)">Save</button>
+                        <button class="btn btn-secondary pull-right mr-2" (click)="goBack()">Back To List</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
